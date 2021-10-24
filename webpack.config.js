@@ -44,10 +44,10 @@ module.exports = [
       compress: true,
       port: 9000,
     },
-    entry: "./app.scss",
+    entry: ["./app.scss", "./app.js"],
     mode: "development",
     output: {
-      filename: "style-bundle.js",
+      filename: "bundle.js",
     },
     module: {
       rules: [
@@ -82,6 +82,13 @@ module.exports = [
               },
             },
           ],
+        },
+        {
+          test: /\.js$/,
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
         },
       ],
     },
